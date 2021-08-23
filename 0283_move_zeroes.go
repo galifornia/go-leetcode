@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func moveZeroes(nums []int) {
 	size := len(nums)
 	if size < 2 {
@@ -26,9 +24,9 @@ func moveZeroes(nums []int) {
 	}
 }
 
-func main() {
-	arr := []int{0, 1, 0, 0, 3, 0, 12}
-	// arr := []int{0, 0, 1}
-	moveZeroes(arr)
-	fmt.Println(arr)
-}
+// func main() {
+// 	arr := []int{0, 1, 0, 0, 3, 0, 12}
+// 	// arr := []int{0, 0, 1}
+// 	moveZeroes(arr)
+// 	fmt.Println(arr)
+// }
