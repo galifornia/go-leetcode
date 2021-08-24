@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func reverseString(s []byte) {
 	size := len(s)
 	left := 0
@@ -14,12 +12,11 @@ func reverseString(s []byte) {
 		left++
 		right--
 	}
-
 }
 
-func main() {
-	s := []byte{'h', 'e', 'l', 'l', 'o'}
-	// ["o","l","l","e","h"]
-	fmt.Println(s)
-	reverseString(s)
-}
+// func main() {
+// 	s := []byte{'h', 'e', 'l', 'l', 'o'}
+// 	// ["o","l","l","e","h"]
+// 	fmt.Println(s)
+// 	reverseString(s)
+// }
