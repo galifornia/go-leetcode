@@ -34,6 +34,7 @@ func reverseWords(s string) string {
 }
 
 // func main() {
-// 	s := "Let's take LeetCode contest"
+// 	// s := "Let's take LeetCode contest"
+// 	s := "God Ding"
 // 	fmt.Println(reverseWords(s))
 // }
