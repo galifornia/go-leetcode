@@ -1,7 +1,6 @@
 package main
 
-import "fmt"
-
+// O(n) y space O(1)
 func singleNumber(nums []int) int {
 	num := nums[0]
 	for i := 1; i < len(nums); i++ {
@@ -10,6 +9,7 @@ func singleNumber(nums []int) int {
 	return num
 }
 
+// O(n^2)
 // func singleNumber(nums []int) int {
 // 	countMap := make(map[int]int)
 // 	for _, v := range nums {
@@ -24,7 +24,7 @@ func singleNumber(nums []int) int {
 // 	return -1
 // }
 
-func main() {
-	nums := []int{4, 1, 2, 1, 2}
-	fmt.Println(singleNumber(nums))
-}
+// func main() {
+// 	nums := []int{4, 1, 2, 1, 2}
+// 	fmt.Println(singleNumber(nums))
+// }
