@@ -8,11 +8,6 @@ package main
  * }
  */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func middleNode(head *ListNode) *ListNode {
 	size := 0
 	p := head
