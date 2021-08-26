@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func lengthOfLongestSubstring(s string) int {
 	size := len(s)
 	longest := 0
@@ -10,7 +8,7 @@ func lengthOfLongestSubstring(s string) int {
 
 	// loop through input string with index & value
 	for i, c := range s {
-		// If character is repeated (present in map) && index of previous appereance
+		// If character is repeated (present in map) && index of previous appeareance
 		// is bigger or equal than current streak (which holds index of last non repeating character)
 		// we increase streak by 1
 		if _, okay := memory[c]; okay && memory[c] >= streak {
@@ -31,7 +29,7 @@ func lengthOfLongestSubstring(s string) int {
 	return longest
 }
 
-func main() {
-	s := "pwwkew"
-	fmt.Println(lengthOfLongestSubstring(s))
-}
+// func main() {
+// 	s := "pwwkew"
+// 	fmt.Println(lengthOfLongestSubstring(s))
+// }
