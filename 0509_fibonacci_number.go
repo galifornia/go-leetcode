@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func fib(n int) int {
 	// return error when n is negative
 	if n < 0 {
@@ -58,6 +56,6 @@ func fib(n int) int {
 // 	return memory[n-1]
 // }
 
-func main() {
-	fmt.Println(fib(5))
-}
+// func main() {
+// 	fmt.Println(fib(5))
+// }
