@@ -18,7 +18,7 @@ func maxAreaOfIsland(grid [][]int) int {
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
 			// skip already visited coordinates
-			if visited[i][j] {
+			if visited[i][j] || grid[i][j] == 0 {
 				continue
 			}
 			visited[i][j] = true
