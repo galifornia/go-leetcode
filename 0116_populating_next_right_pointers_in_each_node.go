@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Node struct {
 	Val   int
@@ -10,22 +13,37 @@ type Node struct {
 }
 
 func connect(root *Node) *Node {
-	if root != nil {
-		assignRightPointer(root.Left, root.Right)
+	if root == nil {
+		return nil
+	}
+
+	queue := make([]*Node, 0)
+	queue = append(queue, root)
+
+	nodes := make([]*Node, 0)
+
+	for len(queue) > 0 {
+		node := queue[0]
+		nodes = append(nodes, node)
+		queue = queue[1:]
+
+		if node.Left != nil {
+			queue = append(queue, node.Left)
+		}
+
+		if node.Right != nil {
+			queue = append(queue, node.Right)
+		}
+
+		nLength := len(nodes)
+		// if we are on second level or lower & last appended node is on the same level to the previous
+		// then point the previous one (Next) to the new one
+		if nLength > 1 && math.Trunc(math.Log2(float64(nLength-1))) == math.Trunc(math.Log2(float64(nLength))) {
+			nodes[len(nodes)-2].Next = nodes[nLength-1]
+		}
 	}
 
 	return root
-}
-
-func assignRightPointer(node1, node2 *Node) {
-	if node1 != nil {
-		node1.Next = node2
-		assignRightPointer(node1.Left, node1.Right)
-		assignRightPointer(node1.Right, node2.Left)
-		if node2 != nil {
-			assignRightPointer(node2.Left, node2.Right)
-		}
-	}
 }
 
 func main() {
