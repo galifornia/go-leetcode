@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func combine(n int, k int) [][]int {
 	combinations := make([][]int, 0)
 
@@ -25,8 +23,8 @@ func combine(n int, k int) [][]int {
 	return combinations
 }
 
-func main() {
-	n := 4
-	k := 2
-	fmt.Println(combine(n, k))
-}
+// func main() {
+// 	n := 4
+// 	k := 2
+// 	fmt.Println(combine(n, k))
+// }
