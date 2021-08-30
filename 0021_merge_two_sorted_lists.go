@@ -1,84 +1,42 @@
 package main
 
-import "fmt"
-
 // type ListNode struct {
 // 	Val  int
 // 	Next *ListNode
 // }
 
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
-	if l1 == nil {
-		return l2
-	}
+	mergedList := &ListNode{}
+	head := mergedList
 
-	if l2 == nil {
-		return l1
-	}
-
-	p := l1
-	p2 := l2
-
-	var p3 *ListNode
-	var p4 *ListNode
-
-	for p != nil || p2 != nil {
-		if p != nil && p2 != nil {
-			if p.Val < p2.Val {
-				if p3 == nil {
-					p3 = &ListNode{Val: p.Val, Next: nil}
-					p4 = p3
-				} else {
-					next := &ListNode{Val: p.Val, Next: nil}
-					p4.Next = next
-					p4 = p4.Next
-				}
-				p = p.Next
-			} else {
-				if p3 == nil {
-					p3 = &ListNode{Val: p2.Val, Next: nil}
-					p4 = p3
-				} else {
-					next := &ListNode{Val: p2.Val, Next: nil}
-					p4.Next = next
-					p4 = p4.Next
-				}
-				p2 = p2.Next
-			}
-		} else if p != nil {
-			if p3 == nil {
-				p3 = &ListNode{Val: p.Val, Next: nil}
-				p4 = p3
-			} else {
-				next := &ListNode{Val: p.Val, Next: nil}
-				p4.Next = next
-				p4 = p4.Next
-			}
-			p = p.Next
-		} else if p2 != nil {
-			if p3 == nil {
-				p3 = &ListNode{Val: p2.Val, Next: nil}
-				p4 = p3
-			} else {
-				next := &ListNode{Val: p2.Val, Next: nil}
-				p4.Next = next
-				p4 = p4.Next
-			}
-			p2 = p2.Next
+	for l1 != nil && l2 != nil {
+		if l1.Val <= l2.Val {
+			mergedList.Next = l1
+			l1 = l1.Next
+		} else {
+			mergedList.Next = l2
+			l2 = l2.Next
 		}
+		mergedList = mergedList.Next
 	}
 
-	return p3
+	if l1 != nil {
+		mergedList.Next = l1
+	} else {
+		mergedList.Next = l2
+	}
+
+	return head.Next
 }
 
-func main() {
-	node3 := &ListNode{Val: 4, Next: nil}
-	node2 := &ListNode{Val: 2, Next: node3}
-	l1 := &ListNode{Val: 1, Next: node2}
+// func main() {
+// 	node3 := &ListNode{Val: 4, Next: nil}
+// 	node2 := &ListNode{Val: 2, Next: node3}
+// 	l1 := &ListNode{Val: 1, Next: node2}
 
-	node6 := &ListNode{Val: 4, Next: nil}
-	node5 := &ListNode{Val: 3, Next: node6}
-	l2 := &ListNode{Val: 1, Next: node5}
+// 	node6 := &ListNode{Val: 4, Next: nil}
+// 	node5 := &ListNode{Val: 3, Next: node6}
+// 	l2 := &ListNode{Val: 1, Next: node5}
 
-	fmt.Println(mergeTwoLists(l1, l2))
-}
+// 	fmt.Println(mergeTwoLists(l1, l2))
+// }
