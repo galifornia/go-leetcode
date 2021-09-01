@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -35,7 +34,7 @@ func CheckIfNumber(r byte) bool {
 	return true
 }
 
-func main() {
-	s := "a1b2"
-	fmt.Println(letterCasePermutation(s))
-}
+// func main() {
+// 	s := "a1b2"
+// 	fmt.Println(letterCasePermutation(s))
+// }
