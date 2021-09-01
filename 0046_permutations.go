@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 func permute(nums []int) [][]int {
 	var res [][]int
 	permuteRec([]int{}, nums, &res)
@@ -27,7 +23,7 @@ func permuteRec(currComb, left []int, res *[][]int) {
 	}
 }
 
-func main() {
-	nums := []int{1, 2, 3}
-	fmt.Println(permute(nums))
-}
+// func main() {
+// 	nums := []int{1, 2, 3}
+// 	fmt.Println(permute(nums))
+// }
