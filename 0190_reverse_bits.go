@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 func reverseBits(num uint32) uint32 {
 	if num == 0 {
 		return 0
@@ -19,11 +15,4 @@ func reverseBits(num uint32) uint32 {
 		num >>= 1
 	}
 	return result
-}
-
-func main() {
-	n := uint32(43261596)
-
-	fmt.Println(reverseBits(n))
-
 }
