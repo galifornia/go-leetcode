@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func searchRange(nums []int, target int) []int {
 	size := len(nums)
 	// quick return when there are no items in array
@@ -30,9 +28,4 @@ func searchRange(nums []int, target int) []int {
 	}
 
 	return []int{-1, -1}
-}
-
-func main() {
-	arr := []int{1}
-	fmt.Println(searchRange(arr, 1))
 }
