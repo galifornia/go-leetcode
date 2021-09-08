@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -47,8 +46,8 @@ func threeSum(nums []int) [][]int {
 	return result
 }
 
-func main() {
-	// arr := []int{-1, 0, 1, 2, -1, -4}
-	arr := []int{3, 0, -2, -1, 1, 2}
-	fmt.Println(threeSum(arr))
-}
+// func main() {
+// 	// arr := []int{-1, 0, 1, 2, -1, -4}
+// 	arr := []int{3, 0, -2, -1, 1, 2}
+// 	fmt.Println(threeSum(arr))
+// }
