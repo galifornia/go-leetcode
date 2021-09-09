@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func findAnagrams(s string, p string) []int {
 	window := make(map[byte]int)
 	objective := createCharMap(p)
@@ -41,8 +39,8 @@ func createCharMap(s string) map[byte]int {
 	return charMap
 }
 
-func main() {
-	s := "cbaebabacd"
-	p := "abc"
-	fmt.Println(findAnagrams(s, p))
-}
+// func main() {
+// 	s := "cbaebabacd"
+// 	p := "abc"
+// 	fmt.Println(findAnagrams(s, p))
+// }
