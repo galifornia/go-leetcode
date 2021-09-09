@@ -9,7 +9,8 @@ func numSubarrayProductLessThanK(nums []int, k int) int {
 	for j := 0; j < len(nums); j++ {
 		product *= nums[j]
 		for i <= j && product >= k {
-			product /= nums[i+1]
+			product /= nums[i]
+			i++
 		}
 		count += j - i + 1
 	}
