@@ -2,28 +2,34 @@ package main
 
 import "fmt"
 
-func allPathsSourceTarget(graph [][]int) [][]int {
-	result := make([][]int, 0)
-	result = append(result, []int{0})
-
-	for i := 0; i < len(graph[0]); i++ {
-		path := make([]int, 0)
-		path = append(path, 0)
-		result = append(result, findPath(graph, graph[0][i], path))
-	}
-
-	return result
+type Path struct {
+	last  int
+	route []int
 }
 
-func findPath(graph [][]int, row int, path []int) []int {
-	path = append(path, row)
-	if row == len(graph)-1 {
-		return path
+func allPathsSourceTarget(graph [][]int) [][]int {
+	paths := [][]int{}
+	res := [][]int{}
+	paths = append(paths, []int{0})
+	for len(paths) > 0 {
+		p := paths[0]
+		paths = paths[1:]
+		// last element in path
+		le := p[len(p)-1]
+		// check if last element is end of our path
+		if le == len(graph)-1 {
+			res = append(res, p)
+			continue
+		}
+		// add all posible path branches
+		for _, n := range graph[le] {
+			np := make([]int, len(p)+1)
+			copy(np, p)
+			np[len(p)] = n
+			paths = append(paths, np)
+		}
 	}
-	for _, i := range graph[row] {
-		return findPath(graph, i, path)
-	}
-	return path
+	return res
 }
 
 func main() {
