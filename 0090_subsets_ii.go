@@ -37,7 +37,3 @@ func count(arr []int, target int) int {
 	}
 	return sum
 }
-
-func main() {
-
-}
