@@ -1,54 +1,41 @@
 package main
 
+import (
+	"sort"
+)
+
 func combinationSum(candidates []int, target int) [][]int {
-	results := make([][]int, 0)
-	countMap := make(map[int]int, len(candidates))
+	// solution array
+	combinations := make([][]int, 0)
+	// we sort the list of integers
+	sort.Ints(candidates)
 
-	combinationRec(candidates, target, []int{}, countMap, 0, &results)
+	// backtracking
+	backtrack(&candidates, &combinations, []int{}, target, 0)
 
-	return results
+	return combinations
 }
 
-func combinationRec(candidates []int, target int, seq []int, countMap map[int]int, sum int, results *[][]int) {
-	if sum == target {
-		for i := range *results {
-			if areMapsCountEqual(countMap, (*results)[i]) {
-				return
-			}
-		}
-		result := make([]int, len(seq))
-		copy(result, seq)
-		*results = append(*results, result)
+func backtrack(candidates *[]int, combinations *[][]int, currentSum []int, remain int, start int) {
+	// if too big return
+	if remain < 0 {
 		return
 	}
 
-	if sum > target {
+	// if we have the target add it to combinations & return
+	if remain == 0 {
+		newComb := make([]int, 0)
+		newComb = append(newComb, currentSum...)
+		*combinations = append((*combinations), newComb)
 		return
 	}
 
-	for _, num := range candidates {
-		seq = append(seq, num)
-		countMap[num]++
-		combinationRec(candidates, target, seq, countMap, sum+num, results)
-		countMap[num]--
-		seq = seq[:len(seq)-1]
+	// walk through all remaining candidates & use recusion
+	for i := start; i < len(*candidates); i++ {
+		currentSum = append(currentSum, (*candidates)[i])
+		backtrack(candidates, combinations, currentSum, remain-(*candidates)[i], i)
+		currentSum = currentSum[:len(currentSum)-1]
 	}
-}
-
-func areMapsCountEqual(count1 map[int]int, arr []int) bool {
-	count2 := make(map[int]int, len(count1))
-
-	for _, num := range arr {
-		count2[num]++
-	}
-
-	for k := range count2 {
-		if count1[k] != count2[k] {
-			return false
-		}
-	}
-
-	return true
 }
 
 // func main() {
