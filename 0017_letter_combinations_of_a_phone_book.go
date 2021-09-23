@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func letterCombinations(digits string) []string {
 	letters := make(map[byte]*[]byte)
 	letters['2'] = &[]byte{'a', 'b', 'c'}
@@ -34,10 +32,9 @@ func recursiveLetterCombinations(digits string, letters map[byte]*[]byte, curren
 	for _, ch := range *letters[digits[i]] {
 		recursiveLetterCombinations(digits, letters, current+string(ch), i+1, solution)
 	}
-
 }
 
-func main() {
-	digits := "23"
-	fmt.Println(letterCombinations(digits))
-}
+// func main() {
+// 	digits := "23"
+// 	fmt.Println(letterCombinations(digits))
+// }
