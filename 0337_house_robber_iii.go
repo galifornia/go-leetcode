@@ -1,52 +1,32 @@
 package main
 
-type TreeNodeee struct {
+type TreeNode struct {
 	Val   int
-	Left  *TreeNodeee
-	Right *TreeNodeee
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-func rob(root *TreeNodeee) int {
-	// reward of each level
-	levelMap := make(map[int]int)
-
-	findTreasure(root, &levelMap, 0)
-
-	a, b := 0, 0
-
-	for i := 0; i < len(levelMap); i++ {
-		if i%2 == 0 {
-			a = max(a+levelMap[i], b)
-		} else {
-			b = max(a, b+levelMap[i])
-		}
-	}
-
-	return max(a, b)
+func rob(root *TreeNode) int {
+	return max(robber(root))
 }
 
-func findTreasure(node *TreeNodeee, levelMap *map[int]int, level int) {
+func robber(node *TreeNode) (int, int) {
 	if node == nil {
-		return
+		return 0, 0
 	}
-
-	if node.Left != nil {
-		findTreasure(node.Left, levelMap, level+1)
-	}
-
-	(*levelMap)[level] += node.Val
-
-	if node.Right != nil {
-		findTreasure(node.Right, levelMap, level+1)
-	}
+	gold := node.Val
+	l1, l2 := robber(node.Left)
+	r1, r2 := robber(node.Right)
+	c1 := gold + l2 + r2
+	c2 := max(l1, l2) + max(r1, r2)
+	return c1, c2
 }
 
 func max(a, b int) int {
 	if a > b {
 		return a
-	} else {
-		return b
 	}
+	return b
 }
 
 // func main() {
