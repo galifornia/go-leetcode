@@ -1,15 +1,19 @@
 package main
 
 func twoSum(nums []int, target int) []int {
-	size := len(nums)
-	for i := 0; i < size; i++ {
-		for k := 0; k < size; k++ {
-			if k != i && nums[i]+nums[k] == target {
-				return []int{i, k}
+	for i := 0; i < len(nums); i++ {
+		for j := i; j < len(nums); j++ {
+			if i == j {
+				continue
+			}
+
+			if nums[i]+nums[j] == target {
+				return []int{i, j}
 			}
 		}
 	}
-	return nil
+
+	return []int{}
 }
 
 // func main() {
